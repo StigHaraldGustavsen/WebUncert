@@ -1,5 +1,12 @@
 A web service that receives a JSON paylod of samples and returns a JSON payload the random uncertanity of the samples
 
+run locally:
+```Bash
+poetry install
+poetry shell
+flask --app webuncert/app run
+```
+
 input HTTP body:
 ```JSON
 {"samples": [1000.1, 999.9, 1000.0, 998.9, 1000.0, 1000.8, 1002.7]}
@@ -29,12 +36,6 @@ returns:
 }
 ```
 
-run locally:
-```Bash
-poetry install
-poetry shell
-flask --app webuncert/app run
-```
 
 valid JSON raw input:
 ```JSON
