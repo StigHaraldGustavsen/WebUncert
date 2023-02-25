@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "webuncert"
+version = "0.1.0"
+description = ""
+authors = ["StigHaraldGustavsen <stighg@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+meter-proving = "^0.1.0"
+flask = "^2.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
