@@ -1,6 +1,17 @@
 A web service that receives a JSON paylod of samples and returns a JSON payload the random uncertanity of the samples
 
 run locally:
+
+make sure you have poetry installed if not
+```Bash
+pip install poetry
+```
+if you want the .venv file to be in the project dir excec
+```Bash
+poetry config virtualenvs.in-project true
+```
+
+install the python modules, enter the .venv and run the application
 ```Bash
 poetry install
 poetry shell
