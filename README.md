@@ -17,7 +17,7 @@ poetry install
 poetry shell
 flask --app webuncert/app run
 ```
-# Run it as a docker container
+# Build and run it as a docker container
 
 create a docker container and run it, and mapping it to port 1000 on the dockerhost machine.
 ```bash
