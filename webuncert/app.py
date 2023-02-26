@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def GetUncert():
     from_repetability = True
-    print(request.json)
+    #print(request.json)
     x = request.json['samples']
     if 'stdev' in request.json:
         from_repetability = not request.json['stdev']
@@ -20,7 +20,7 @@ def GetUncert():
     if 'coverage_factor' in request.json:
         coverage_factor = request.json['coverage_factor']
     
-    print(request.json)
+    
     if 'confidence_interval' in request.json and not 'coverage_factor' in request.json:
         uncert = calculate_uncertanity(x,repetability=from_repetability,confidence_intervall=confidence_interval)
     elif 'coverage_factor' in request.json:

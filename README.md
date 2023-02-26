@@ -1,6 +1,6 @@
 A web service that receives a JSON paylod of samples and returns a JSON payload the random uncertanity of the samples
 
-run locally:
+#run locally:
 
 make sure you have poetry installed if not
 ```Bash
@@ -17,6 +17,15 @@ poetry install
 poetry shell
 flask --app webuncert/app run
 ```
+#Run it as a docker container
+
+create a docker container and run it, and mapping it to port 1000 on the dockerhost machine.
+```bash
+docker build -t docker_user/conatinername:0.0.1.RELEACE .
+docker container run -d -p 1000:5000 docker_user/conatinername:0.0.1.RELEACE
+```
+
+#how to use it
 
 input HTTP body:
 ```JSON
@@ -59,3 +68,5 @@ valid JSON raw input:
 ```
 Note:
 if both confidence_interval and coverage factor is sent in the body, then coverage factor base uncert will be returned.
+
+
