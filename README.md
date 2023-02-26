@@ -6,7 +6,7 @@ make sure you have poetry installed if not
 ```Bash
 pip install poetry
 ```
-if you want the .venv file to be in the project dir excec
+if you want the .venv file to be in the project directory:
 ```Bash
 poetry config virtualenvs.in-project true
 ```
