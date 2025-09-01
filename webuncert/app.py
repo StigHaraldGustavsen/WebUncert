@@ -1,10 +1,15 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 from meter_proving.meter_proving import calculate_uncertanity
 
 app = Flask(__name__)
 
+
 @app.route("/")
+def index():
+    return render_template('index2.html')
+
+@app.route("/calc", methods=['GET', 'POST'])
 def GetUncert():
     from_repetability = True
     #print(request.json)

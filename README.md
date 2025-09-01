@@ -2,31 +2,28 @@ A web service that receives a JSON paylod of samples and returns a JSON payload 
 
 # run locally:
 
-make sure you have poetry installed if not
+install uv
 ```Bash
-pip install poetry
-```
-if you want the .venv file to be in the project directory:
-```Bash
-poetry config virtualenvs.in-project true
+uv sync
 ```
 
 install the python modules, enter the .venv and run the application
 ```Bash
-poetry install
-poetry shell
+uv sync
 flask --app webuncert/app run
+uv run flask --app webuncert/app run --port=5000 --host=0.0.0.0
 ```
 # Build and run it as a docker container
 
 create a docker container and run it, and mapping it to port 1000 on the dockerhost machine.
 ```bash
-docker build -t docker_user/conatinername:0.0.1.RELEACE .
-docker container run -d -p 1000:5000 docker_user/conatinername:0.0.1.RELEACE
+docker build -t webuncert .
+docker container run -d -p 1000:5000 webuncert
 ```
 
 # how to use the webservice
 
+it is the /calc route, you can give a GET or POST request with:
 input HTTP body:
 ```JSON
 {"samples": [1000.1, 999.9, 1000.0, 998.9, 1000.0, 1000.8, 1002.7]}

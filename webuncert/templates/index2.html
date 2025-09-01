@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Calculator</title>
+  <script>
+    async function updateResults() {
+      const inputs = document.querySelectorAll(".sample-input");
+      let samples = [];
+
+      inputs.forEach(input => {
+        if (input.value.trim() !== "") {
+          samples.push(parseFloat(input.value));
+        }
+      });
+
+      if (samples.length < 3) {
+        document.getElementById("results").innerHTML = "<p style='color:red'>Enter at least 3 samples</p>";
+        return;
+      }
+
+      try {
+        const response = await fetch("/calc", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ samples })
+        });
+
+        if (!response.ok) {
+          throw new Error("Server error");
+        }
+
+        const result = await response.json();
+
+        document.getElementById("results").innerHTML =
+          `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+      } catch (error) {
+        document.getElementById("results").innerHTML =
+          `<p style='color:red'>Error: ${error.message}</p>`;
+      }
+    }
+
+    function addSampleInput() {
+      const container = document.getElementById("samples-container");
+      const input = document.createElement("input");
+      input.type = "number";
+      input.step = "any";
+      input.className = "sample-input";
+      input.placeholder = "Enter sample value";
+      container.appendChild(input);
+      container.appendChild(document.createElement("br"));
+    }
+
+    window.onload = function() {
+      for (let i = 0; i < 3; i++) {
+        addSampleInput();
+      }
+    };
+  </script>
+</head>
+<body>
+  <h2>Sample Calculator</h2>
+  <form onsubmit="return false;">
+    <div id="samples-container"></div>
+    <button type="button" onclick="addSampleInput()">+ Add Sample</button>
+    <button type="button" onclick="updateResults()">Calculate</button>
+  </form>
+
+  <h3>Results:</h3>
+  <div id="results"><p>Enter values and click Calculate to see results</p></div>
+</body>
+</html>
